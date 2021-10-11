@@ -1,0 +1,14 @@
+.CompanyCard {
+  box-shadow: 1px 2px grey;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.CompanyCard:hover {
+  box-shadow: 2px 3px yellowgreen;
+}
+
+.CompanyCard img {
+  height: 25px;
+  float: right;
+}

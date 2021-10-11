@@ -1,17 +1,17 @@
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './Routes';
-import NavBar from './NavBar';
+import { Container } from 'reactstrap';
 
-import './App.css';
+import Routes from './Routes';
+import Navigation from './Navigation';
 
 const App = () => {
   return (
-    <div className="App">
+    <Container fluid={true} className="p-0">
       <BrowserRouter>
-        <NavBar />
+        <Navigation />
         <Routes />
       </BrowserRouter>
-    </div>
+    </Container>
   );
 }
 

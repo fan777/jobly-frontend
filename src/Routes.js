@@ -1,7 +1,12 @@
 import { Route, Switch } from 'react-router-dom';
+
 import Home from './Home';
-import CompaniesList from './CompaniesList';
-import JobsList from './JobsList.js';
+import LoginForm from './users/LoginForm';
+import SignupForm from './users/SignupForm';
+import CompanyList from './companies/CompanyList';
+import CompanyDetail from './companies/CompanyDetail';
+import JobList from './jobs/JobList';
+import ProfileForm from './users/ProfileForm';
 
 const Routes = () => {
   return (
@@ -9,11 +14,23 @@ const Routes = () => {
       <Route exact path='/'>
         <Home />
       </Route>
-      <Route path='/companies'>
-        <CompaniesList />
+      <Route exact path='/login'>
+        <LoginForm />
       </Route>
-      <Route path='/jobs'>
-        <JobsList />
+      <Route exact path='/signup'>
+        <SignupForm />
+      </Route>
+      <Route exact path='/companies'>
+        <CompanyList />
+      </Route>
+      <Route exact path='/companies/:handle'>
+        <CompanyDetail />
+      </Route>
+      <Route exact path='/jobs'>
+        <JobList />
+      </Route>
+      <Route path='/profile'>
+        <ProfileForm />
       </Route>
     </Switch>
   )
