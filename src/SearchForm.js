@@ -15,19 +15,17 @@ const SearchForm = ({ searchFunc }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    searchFunc(formData.search)
+    searchFunc(formData.search ? formData.search : undefined)
     setFormData(initialState);
   }
 
   return (
-    <div>
-      <Form onSubmit={handleSubmit}>
-        <InputGroup>
-          <Input type="text" name="search" id="search" placeholder="Enter search term" value={formData.search} onChange={handleChange} />
-          <InputGroupAddon addonType="append"><Button>Submit</Button></InputGroupAddon>
-        </InputGroup>
-      </Form>
-    </div>
+    <Form onSubmit={handleSubmit}>
+      <InputGroup>
+        <Input type="text" name="search" id="search" placeholder="Enter search term" value={formData.search} onChange={handleChange} />
+        <InputGroupAddon addonType="append"><Button>Submit</Button></InputGroupAddon>
+      </InputGroup>
+    </Form>
   )
 }
 

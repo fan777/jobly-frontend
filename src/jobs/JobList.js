@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 import JoblyApi from '../api/api';
-import SearchForm from '../SearchForm';
 import JobCard from './JobCard';
+import SearchForm from '../SearchForm';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -22,7 +22,7 @@ const JobList = () => {
       <SearchForm searchFunc={getJobs} />
       {jobs && jobs.length > 0
         ? jobs.map(job => (<JobCard key={job.id} job={job} />))
-        : (<Row className="my-4"><Col>No jobs found</Col></Row>)}
+        : (<Row className="my-4"><Col>Sorry, no jobs were found!</Col></Row>)}
     </Container>
   )
 }
