@@ -8,8 +8,8 @@ const CompanyCard = ({ company }) => {
   return (
     <Card className="CompanyCard my-4" tag={Link} to={`/companies/${handle}`}>
       <CardBody>
-        <CardTitle tag="h5">{name}</CardTitle>
         {logoUrl ? <img src={logoUrl} alt={name} /> : ""}
+        <CardTitle tag="h5">{name}</CardTitle>
         <CardText>{description}</CardText>
       </CardBody>
     </Card>

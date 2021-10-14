@@ -8,7 +8,7 @@ const ProfileForm = () => {
       <Row>
         <Col>
           <h4 className="my-4">Profile</h4>
-          <Form className="Form">
+          <Form className="Form border p-4">
             <FormGroup>
               <Label for="username">Username</Label>
               <Input type="text" name="username" id="username" disabled />
