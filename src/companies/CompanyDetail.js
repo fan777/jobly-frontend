@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 import JoblyApi from '../api/api';
@@ -17,6 +17,9 @@ const CompanyDetail = () => {
     getCompany();
   }, [handle])
 
+  if (company === undefined)
+    return <Redirect to='/' />
+
   if (company) {
     const { name, description, jobs } = company;
     return (
@@ -24,7 +27,7 @@ const CompanyDetail = () => {
         <h5>{name}</h5>
         <p>{description}</p>
         {jobs.map(job => (
-          <JobCard key={job.id} job={job} />
+          <JobCard key={job.id} {...job} />
         ))}
       </Container>
     )

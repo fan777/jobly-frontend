@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Home from './home/Home';
 import LoginForm from './users/LoginForm';
@@ -18,6 +18,7 @@ const Routes = () => {
       <Route exact path='/companies/:handle' component={CompanyDetail} />
       <Route exact path='/jobs' component={JobList} />
       <Route path='/profile' component={ProfileForm} />
+      <Redirect to='/' />
     </Switch >
   )
 }

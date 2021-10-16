@@ -3,8 +3,7 @@ import { Card, CardBody, CardTitle, CardText } from 'reactstrap';
 
 import './CompanyCard.css'
 
-const CompanyCard = ({ company }) => {
-  const { handle, name, description, logoUrl } = company;
+const CompanyCard = ({ handle, name, description, logoUrl }) => {
   return (
     <Card className="CompanyCard my-4" tag={Link} to={`/companies/${handle}`}>
       <CardBody>

@@ -20,8 +20,8 @@ const CompanyList = () => {
   return (
     <Container className="my-4 col-md-8 offset-md-2">
       <SearchForm searchFunc={getCompanies} />
-      {companies && companies.length > 0
-        ? companies.map(company => (<CompanyCard key={company.handle} company={company} />))
+      {companies && companies.length
+        ? companies.map(company => (<CompanyCard key={company.handle} {...company} />))
         : (<Row className="my-4"><Col>Sorry, no companies were found!</Col></Row>)}
     </Container>
   )

@@ -29,8 +29,8 @@ const LoginForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     setAlerts();
-    const { username, password } = formData;
-    let response = await JoblyApi.authUser(username, password)
+    // const { username, password } = formData;
+    let response = await JoblyApi.authUser(formData)
     if (Array.isArray(response)) {
       setAlerts(response)
     } else {

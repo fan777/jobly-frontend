@@ -2,9 +2,7 @@ import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 
 import './JobCard.css'
 
-const JobCard = ({ job }) => {
-  // const { id, title, salary, equity, companyName } = job;
-  const { title, salary, equity, companyName } = job;
+const JobCard = ({ id, title, salary, equity, companyName }) => {
   return (
     <Card className="JobCard my-4">
       <CardBody>

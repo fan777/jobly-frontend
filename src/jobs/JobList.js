@@ -20,8 +20,8 @@ const JobList = () => {
   return (
     <Container className="my-4 col-md-8 offset-md-2">
       <SearchForm searchFunc={getJobs} />
-      {jobs && jobs.length > 0
-        ? jobs.map(job => (<JobCard key={job.id} job={job} />))
+      {jobs && jobs.length
+        ? jobs.map(job => (<JobCard key={job.id} {...job} />))
         : (<Row className="my-4"><Col>Sorry, no jobs were found!</Col></Row>)}
     </Container>
   )
