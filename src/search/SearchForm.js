@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, InputGroup, Input, InputGroupAddon, Button } from 'reactstrap';
 
-const SearchForm = ({ searchFunc }) => {
+const SearchForm = ({ search }) => {
   const initialState = { search: "" };
   const [formData, setFormData] = useState(initialState);
 
@@ -15,7 +15,7 @@ const SearchForm = ({ searchFunc }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    searchFunc(formData.search ? formData.search : undefined)
+    search(formData.search ? formData.search : undefined)
     setFormData(initialState);
   }
 

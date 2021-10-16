@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import JoblyApi from '../api/api';
 import JobCard from './JobCard';
-import SearchForm from '../SearchForm';
+import SearchForm from '../search/SearchForm';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -12,14 +12,14 @@ const JobList = () => {
     getJobs();
   }, [])
 
-  async function getJobs(search) {
-    let jobs = await JoblyApi.getJobs(search);
+  async function getJobs(value) {
+    let jobs = await JoblyApi.getJobs(value);
     setJobs(jobs);
   }
 
   return (
     <Container className="my-4 col-md-8 offset-md-2">
-      <SearchForm searchFunc={getJobs} />
+      <SearchForm search={getJobs} />
       {jobs && jobs.length
         ? jobs.map(job => (<JobCard key={job.id} {...job} />))
         : (<Row className="my-4"><Col>Sorry, no jobs were found!</Col></Row>)}
