@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 
 import JoblyApi from '../api/api';
 import JobCard from './JobCard';
 import SearchForm from '../search/SearchForm';
 
+
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     getJobs();
-  }, [])
+  }, [location.key])
 
-  async function getJobs(value) {
+  const getJobs = async value => {
     let jobs = await JoblyApi.getJobs(value);
     setJobs(jobs);
   }

@@ -39,13 +39,8 @@ class JoblyApi {
   /** Get details on a company by handle. */
 
   static async getCompany(handle) {
-    return await this.request(`companies/${handle}`)
-      .then(res => {
-        return res.company;
-      })
-      .catch(err => {
-        return undefined;
-      });
+    let res = await this.request(`companies/${handle}`);
+    return res.company;
   }
 
   /** Get all companies. */
@@ -74,6 +69,13 @@ class JoblyApi {
   static async updateUser(username, data) {
     let res = await this.request(`users/${username}`, data, "patch");
     return res.user;
+  }
+
+  /** Apply job */
+
+  static async applyJob(username, jobId) {
+    let res = await this.request(`users/${username}/jobs/${jobId}`, null, "post");
+    return res.applied;
   }
 
   /** Login user */

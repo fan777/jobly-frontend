@@ -1,20 +1,16 @@
-import { /*useState,*/ useContext } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, /*Collapse, NavbarToggler,*/ NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 import UserContext from './users/userContext';
 
-const Navigation = () => {
+const Navigation = ({ logout }) => {
   const { currentUser } = useContext(UserContext);
-  // const [collapsed, setCollapsed] = useState(true);
-  // const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
     <>
       <Navbar color="light" light expand="md" className="px-3">
         <NavbarBrand href="/">jobly</NavbarBrand>
-        {/* <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!collapsed} navbar> */}
         <Nav className="ms-auto" navbar>
           {currentUser ? (
             <>
@@ -28,7 +24,7 @@ const Navigation = () => {
                 <NavLink tag={Link} to="/profile">Profile</NavLink>
               </NavItem>
               <NavItem className="mx-2">
-                <NavLink tag={Link} to="/">Log Out  {`${currentUser.username}`}</NavLink>
+                <NavLink tag={Link} to="/" onClick={logout}>Log Out  {`${currentUser.username}`}</NavLink>
               </NavItem>
             </>
           ) : (
@@ -42,7 +38,6 @@ const Navigation = () => {
             </>
           )}
         </Nav>
-        {/* </Collapse> */}
       </Navbar>
     </>
   )

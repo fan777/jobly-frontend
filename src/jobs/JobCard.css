@@ -7,3 +7,7 @@
 .JobCard:hover {
   box-shadow: 2px 3px yellowgreen;
 }
+
+.JobCard button {
+  float: right;
+}

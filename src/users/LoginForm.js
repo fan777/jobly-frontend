@@ -1,22 +1,18 @@
-import { useState, useEffect } from 'react';
-import { Alert, Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import JoblyApi from '../api/api';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 import './Form.css';
 
-const LoginForm = () => {
-  const [user, setUser] = useState();
-  const [alerts, setAlerts] = useState("");
-  const [formData, setFormData] = useState(initialState);
+const LoginForm = ({ login }) => {
+  const initialState = {
+    username: "",
+    password: ""
+  }
 
-  useEffect(() => {
-    console.log(user);
-    // async function getUser(user) {
-    //   let authUser = await JoblyApi.getUser(user)
-    //   console.log(authUser);
-    // }
-    // getUser();
-  }, [user])
+  const [alerts, setAlerts] = useState([]);
+  const [formData, setFormData] = useState(initialState);
+  const { push } = useHistory();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -28,17 +24,14 @@ const LoginForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    setAlerts();
-    // const { username, password } = formData;
-    let response = await JoblyApi.authUser(formData)
-    if (Array.isArray(response)) {
-      setAlerts(response)
+    setAlerts([]);
+    let result = await login(formData);
+    if (result.success) {
+      push('/companies');
     } else {
-      console.log(response)
-    };
-
-    setUser(formData.username)
-    setFormData(initialState);
+      setFormData(initialState);
+      setAlerts(result.err)
+    }
   }
 
   return (
@@ -55,18 +48,13 @@ const LoginForm = () => {
               <Label for="password">Password</Label>
               <Input type="password" name="password" id="password" value={formData.password} onChange={handleChange} />
             </FormGroup>
-            {alerts && alerts.map(alert => <Alert color="danger">{alert}</Alert>)}
+            {alerts && alerts.map((alert, index) => <div className="alert alert-danger" key={index}>{alert}</div>)}
             <Button>Submit</Button>
           </Form>
         </Col>
       </Row>
     </Container>
   )
-}
-
-const initialState = {
-  username: "",
-  password: ""
 }
 
 export default LoginForm

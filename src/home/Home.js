@@ -18,7 +18,7 @@ function Home() {
           <p>All the jobs in one, convenient place.</p>
           {currentUser ? (
             <>
-              <h5>Welcome Back, {`${currentUser.username}`}</h5>
+              <h5>Welcome Back, {`${currentUser.firstName}`}</h5>
             </>
           ) : (
             <>
@@ -26,8 +26,6 @@ function Home() {
               <Button onClick={() => push('/signup')} className="mx-2">Sign up</Button>
             </>
           )}
-
-
         </Col>
       </Row>
     </Container >

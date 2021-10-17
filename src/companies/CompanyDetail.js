@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
 import JoblyApi from '../api/api';
@@ -8,17 +8,16 @@ import JobCard from '../jobs/JobCard';
 const CompanyDetail = () => {
   const { handle } = useParams();
   const [company, setCompany] = useState(null);
+  const [alerts, setAlerts] = useState([]);
 
   useEffect(() => {
-    async function getCompany() {
-      let company = await JoblyApi.getCompany(handle);
-      setCompany(company);
+    const getCompany = async () => {
+      await JoblyApi.getCompany(handle)
+        .then(company => setCompany(company))
+        .catch(err => setAlerts(err))
     }
     getCompany();
   }, [handle])
-
-  if (company === undefined)
-    return <Redirect to='/' />
 
   if (company) {
     const { name, description, jobs } = company;
@@ -29,6 +28,14 @@ const CompanyDetail = () => {
         {jobs.map(job => (
           <JobCard key={job.id} {...job} />
         ))}
+      </Container>
+    )
+  }
+
+  if (alerts) {
+    return (
+      <Container className="my-4 col-md-8 offset-md-2">
+        {alerts && alerts.map((alert, index) => <div className="alert alert-danger" key={index}>{alert}</div>)}
       </Container>
     )
   }
