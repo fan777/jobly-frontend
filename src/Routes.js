@@ -30,7 +30,7 @@ const Routes = ({ login, signup }) => {
       <PrivateRoute exact path='/jobs'>
         <JobList />
       </PrivateRoute>
-      <PrivateRoute path='/profile'>
+      <PrivateRoute exact path='/profile'>
         <ProfileForm />
       </PrivateRoute>
       <Redirect to='/' />
