@@ -49,7 +49,7 @@ const SignupForm = ({ signup }) => {
             </FormGroup>
             <FormGroup className="my-3">
               <Label for="password">Password</Label>
-              <Input type="password" name="password" id="password" value={formData.passowrd} onChange={handleChange} />
+              <Input type="password" name="password" id="password" value={formData.password} onChange={handleChange} />
             </FormGroup>
             <FormGroup className="my-3">
               <Label for="firstName">First name</Label>
